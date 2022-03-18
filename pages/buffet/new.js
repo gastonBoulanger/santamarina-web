@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { getMenuWeb } from '../../lib/api'
-import { GetItemsMenu } from './buffetHelper';
+import { GetItemsMenu } from '../../utils/buffetHelper';
 
 export default function NewBuffet({menu}) {
     const buffet = GetItemsMenu(menu);
