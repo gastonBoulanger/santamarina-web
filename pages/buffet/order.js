@@ -39,12 +39,12 @@ export default function NewBuffet({menu}) {
                     { 
                         menuOrder && menuOrder.menuItemsCollection && menuOrder.menuItemsCollection.items.map((submenu) => {
                             return (
-                                <div className="bg-white rounded-xl shadow-lg my-3 p-6">
+                                <div key={`category-${submenu.id}`} className="bg-white rounded-xl shadow-lg my-3 p-6">
                                     <strong>{submenu.title}</strong>
                                     {
                                         submenu && submenu.saleItemsCollection && submenu.saleItemsCollection.items.map((item) =>{
                                             return (
-                                                <ItemOrder item={item} click={setOrder} />
+                                                <ItemOrder key={`iemOrder-${item.id}`} item={item} click={setOrder} />
                                             )
                                         })
                                     }

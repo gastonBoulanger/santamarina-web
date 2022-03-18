@@ -28,7 +28,7 @@ export default function Navbar ({ menu }) {
                                 { 
                                     menu && menu.menuItemsCollection && menu.menuItemsCollection.items.map((submenu) => {
                                         return (
-                                            <Submenu submenu={submenu} isMobile={showMenuMobile} />
+                                            <Submenu key={`submenu-${submenu.id}`} submenu={submenu} isMobile={showMenuMobile} />
                                         )
                                     })
                                 }
@@ -39,7 +39,7 @@ export default function Navbar ({ menu }) {
                             {
                                 menu && menu.buttonsCollection && menu.buttonsCollection.items.map((button) => {
                                     return (
-                                        <Link href={button.link}>
+                                        <Link key={`button-${button.id}`} href={button.link}>
                                             <a href="" className="py-2 px-2 font-medium text-white bg-black rounded hover:bg-grey transition duration-300">{button.text}</a>
                                         </Link>
                                     )
@@ -50,7 +50,7 @@ export default function Navbar ({ menu }) {
                             <button className="outline-none mobile-menu-button" onClick={handleMenuClick}>
                                 <svg className=" w-6 h-6 text-black hover:text-gray-600"
                                     fill="none"
-                                    stroke-width="2"
+                                    strokeWidth="2"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >
@@ -65,7 +65,7 @@ export default function Navbar ({ menu }) {
                         {
                             menu && menu.menuItemsCollection && menu.menuItemsCollection.items.map((submenu) => {
                                 return (
-                                    <Submenu submenu={submenu} isMobile={showMenuMobile} />
+                                    <Submenu key={`submenu-${submenu.id}`} submenu={submenu} isMobile={showMenuMobile} />
                                 )
                             })
                         }

@@ -31,12 +31,12 @@ export default function NewBuffet({menu}) {
                             { 
                                 menu && menu.menuItemsCollection && menu.menuItemsCollection.items.map((submenu) => {
                                     return (
-                                        <div className="bg-white rounded-xl shadow-lg my-3 p-6">
+                                        <div key={`category-${submenu.id}`} className="bg-white rounded-xl shadow-lg my-3 p-6">
                                             <strong>{submenu.title}</strong>
                                             {
                                                 submenu && submenu.saleItemsCollection && submenu.saleItemsCollection.items.map((item) =>{
                                                     return (
-                                                        <div class="grid grid-cols-2 align-items-center py-2">
+                                                        <div key={`item-${submenu.id}`} className="grid grid-cols-2 align-items-center py-2">
                                                             <p>{item.title}</p>
                                                             <Field className="h-8 p-2 border-black border-2 rounded-md" type="number" name={item.title} placeholder="Cant." />
                                                             <ErrorMessage name={item.title} component="div" />

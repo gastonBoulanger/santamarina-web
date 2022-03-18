@@ -7,7 +7,7 @@ export default function Footer ({menu}) {
                 <div className="flex justify-center">
                     <a href="#!" className="mr-6 text-gray-600">
                         <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
-                        class="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
+                        className="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 320 512">
                         <path fill="currentColor"
                             d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
@@ -62,14 +62,14 @@ export default function Footer ({menu}) {
                     {
                         menu && menu.menuItemsCollection && menu.menuItemsCollection.items.map((submenu) => {
                             return (
-                                <div>
+                                <div key={`submenu-${submenu.id}`}>
                                     <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                                         {submenu.title}
                                     </h6>
                                     {
                                         submenu.linksCollection && submenu.linksCollection.items.map((item) => {
                                             return (
-                                                <p className="mb-4">
+                                                <p key={`link-${item.id}`} className="mb-4">
                                                     <Link href={item.link}>
                                                         <a className="text-gray-600">{item.text}</a>
                                                     </Link>
