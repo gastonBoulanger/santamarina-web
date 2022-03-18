@@ -1,4 +1,4 @@
-export default function GetItemsMenu(menu) {
+export const GetItemsMenu = (menu) => {
     let buffet = { name: ''};
     if(menu && menu.menuItemsCollection){
         menu.menuItemsCollection.items.map(submenu =>{
