@@ -6,7 +6,7 @@ const createSubmenu = (submenu) => {
         return <DropdownMenu title={submenu.title} items={submenu.linksCollection.items} />
     }
     else {
-        return <a href="" class="py-4 px-2 text-lg text-black font-semibold">{submenu.title}</a>
+        return <a href="" className="py-4 px-2 text-lg text-black font-semibold">{submenu.title}</a>
     }
 }
 
@@ -15,7 +15,7 @@ const createItemMobile = (submenu) => {
         return <ItemMenuMobile title={submenu.title} items={submenu.linksCollection.items} />
     }
     else {
-        return <a href="" class="py-4 px-2 text-lg text-black font-semibold">{submenu.title}</a>
+        return <a href="" className="py-4 px-2 text-lg text-black font-semibold">{submenu.title}</a>
     }
 }
 

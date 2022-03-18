@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react"
 import Head from "next/head"
-import Layout from "../../components/layout"
-import Button from "../../components/button"
-import { getAllPostsWithSlug, getAllPostsForHome } from "../../lib/api"
-import { initialSharedProps } from "../../lib/resources"
-initialSharedProps
+import Layout from "../components/layout"
+import Button from "../components/button"
+import { getAllPostsWithSlug, getAllPostsForHome } from "../lib/api"
+import { initialSharedProps } from "../lib/resources"
 
 export default function Path( {preview, allPosts, navbar, footer }) {
     const [user, setUser] = useState(undefined)
@@ -17,7 +16,7 @@ export default function Path( {preview, allPosts, navbar, footer }) {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Layout menu={navbar} footer={footer}>
-            <div class="w-screen">
+            <div className="w-screen">
               <Button >
                 Login Google
               </Button>

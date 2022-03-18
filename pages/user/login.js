@@ -17,7 +17,7 @@ export default function Login({page}) {
             <meta name="description" content="Web Ofical Club Santamarina Tandil" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div class="w-screen">
+        <div className="w-screen">
             <h1 className={`text-3xl font-bold text-gray-dark`}>
                 Esto es <a href="https://nextjs.org" className="text-yellow">Club Santamarina</a>
             </h1>

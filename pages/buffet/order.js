@@ -1,7 +1,5 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getMenuWeb } from '../../lib/api'
-import { GetItemsMenu } from './buffetHelper';
 import ItemOrder from './itemOrder';
 
 export default function NewBuffet({menu}) {
@@ -32,16 +30,16 @@ export default function NewBuffet({menu}) {
         calculateTotal();
     }
     return (
-        <div class="bg-gray-200">
-            <div class="w-screen h-screen grid justify-items-center px-3">
-                <h1 class='text-3xl font-bold text-gray-dark align-middle p-3'>
+        <div className="bg-gray-200">
+            <div className="w-screen h-screen grid justify-items-center px-3">
+                <h1 className='text-3xl font-bold text-gray-dark align-middle p-3'>
                     Orden
                 </h1>
                 <div className="grid grid-cols-1 justify-center">
                     { 
                         menuOrder && menuOrder.menuItemsCollection && menuOrder.menuItemsCollection.items.map((submenu) => {
                             return (
-                                <div class="bg-white rounded-xl shadow-lg my-3 p-6">
+                                <div className="bg-white rounded-xl shadow-lg my-3 p-6">
                                     <strong>{submenu.title}</strong>
                                     {
                                         submenu && submenu.saleItemsCollection && submenu.saleItemsCollection.items.map((item) =>{
@@ -54,13 +52,13 @@ export default function NewBuffet({menu}) {
                             )
                         })
                     }
-                    <div class="mx-3 my-4 flex justify-center">
-                        <button class="py-3 px-6 border-2 border-black text-black rounded-full">
+                    <div className="mx-3 my-4 flex justify-center">
+                        <button className="py-3 px-6 border-2 border-black text-black rounded-full">
                             TOTAL: ${totalAmmount}
                         </button>
                     </div>
-                    <div class="mx-3 my-4 flex justify-center">
-                        <button class="py-3 px-6 bg-black text-white rounded-full">
+                    <div className="mx-3 my-4 flex justify-center">
+                        <button className="py-3 px-6 bg-black text-white rounded-full">
                             TOMAR ORDEN
                         </button>
                     </div>

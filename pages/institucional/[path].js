@@ -17,7 +17,7 @@ export default function Path( {preview, allPosts, navbar, footer }) {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Layout menu={navbar} footer={footer}>
-            <div class="w-screen">
+            <div className="w-screen">
               <h1 className={`text-3xl font-bold text-gray-dark`}>
                 Esto es <a href="https://nextjs.org" className="text-yellow">Club Santamarina</a>
               </h1>

@@ -5,9 +5,9 @@ import { GetItemsMenu } from './buffetHelper';
 export default function NewBuffet({menu}) {
     const buffet = GetItemsMenu(menu);
     return (
-        <div class="bg-gray-200">
-            <div class="w-screen h-screen grid justify-items-center px-3">
-                <h1 class='text-3xl font-bold text-gray-dark align-middle p-3'>
+        <div className="bg-gray-200">
+            <div className="w-screen h-screen grid justify-items-center px-3">
+                <h1 className='text-3xl font-bold text-gray-dark align-middle p-3'>
                     Cantina
                 </h1>
                 <Formik
@@ -31,7 +31,7 @@ export default function NewBuffet({menu}) {
                             { 
                                 menu && menu.menuItemsCollection && menu.menuItemsCollection.items.map((submenu) => {
                                     return (
-                                        <div class="bg-white rounded-xl shadow-lg my-3 p-6">
+                                        <div className="bg-white rounded-xl shadow-lg my-3 p-6">
                                             <strong>{submenu.title}</strong>
                                             {
                                                 submenu && submenu.saleItemsCollection && submenu.saleItemsCollection.items.map((item) =>{
@@ -48,8 +48,8 @@ export default function NewBuffet({menu}) {
                                     )
                                 })
                             }
-                            <div class="mx-3 my-4 flex justify-center">
-                                <button type="submit" class="py-3 px-6 bg-black text-white rounded-full" disabled={isSubmitting}>
+                            <div className="mx-3 my-4 flex justify-center">
+                                <button type="submit" className="py-3 px-6 bg-black text-white rounded-full" disabled={isSubmitting}>
                                     ABRIR CANTINA
                                 </button>
                             </div>

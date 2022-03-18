@@ -13,8 +13,8 @@ export default function Home( {preview, allPosts, navbar, footer }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout menu={navbar} footer={footer}>
-        <div class="w-screen">
-          <div class="bg-gradient-to-r from-black via--yellow-dark to-yellow h-48">
+        <div className="w-screen">
+          <div className="bg-gradient-to-r from-black via--yellow-dark to-yellow h-48">
             <Image
               layout='responsive'
               src="/images/campeon.jpg"
