@@ -1,9 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useRouter } from 'next/router';
 import { getMenuWeb } from '../../lib/api'
 import { GetItemsMenu } from '../../utils/buffetHelper';
 
 export default function NewBuffet({menu}) {
     const buffet = GetItemsMenu(menu);
+    const router = useRouter();
     return (
         <div className="bg-gray-200">
             <div className="w-screen h-screen grid justify-items-center px-3">
@@ -13,12 +15,12 @@ export default function NewBuffet({menu}) {
                 <Formik
                     initialValues={buffet}
                     onSubmit={(values, { setSubmitting }) => {
-                        console.log('submit')
+                        values.orders = [];
+                        localStorage.setItem('buffet',JSON.stringify(values, null, 2))
                         setTimeout(() => {
-                            console.log('values', values)
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
+                            setSubmitting(false);
                         }, 400);
+                        router.push('/buffet');
                     }}
                     >
                     {({ isSubmitting }) => (

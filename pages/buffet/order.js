@@ -2,25 +2,30 @@ import { useState } from 'react';
 import { getMenuWeb } from '../../lib/api'
 import ItemOrder from './itemOrder';
 
-export default function NewBuffet({menu}) {
-    let menuOrder = menu;
+export default function NewOrder({menu}) {
+    const originMenu = JSON.parse(JSON.stringify(menu));
+    const [menuOrder, setMenuOrder] = useState(originMenu);
+    const [order, setOrder] = useState([]);
     const [totalAmmount, setTotalAmmount] = useState(0);
 
     const calculateTotal = () =>{
         let total = 0;
+        let newOrder = [];
+        setOrder(newOrder); 
         menuOrder && menuOrder.menuItemsCollection && menuOrder.menuItemsCollection.items.map((submenu) => {
             submenu && submenu.saleItemsCollection && submenu.saleItemsCollection.items.map((item) =>{
                 if(item.price && item.count) {
                     const subtotal = item.price * item.count;
                     total = total + subtotal;
+                    newOrder.push(item);
                 }
             });
         });
-        console.log('total', total)
+        setOrder(newOrder);
         setTotalAmmount(total);
     }
 
-    const setOrder = (action, item) => {
+    const setItemOrder = (action, item) => {
         if(action === 'add'){
             item.count = item.count ? item.count + 1 : 1;
         }
@@ -29,6 +34,28 @@ export default function NewBuffet({menu}) {
         }
         calculateTotal();
     }
+
+    const saveOrder = () => {
+        const buffet = JSON.parse(localStorage.getItem('buffet'));
+        buffet.orders.push(order);
+        localStorage.setItem('buffet', JSON.stringify(buffet));
+        restartOrder();
+    }
+
+    const restartOrder = () => {
+        setMenuOrder({...menu});
+        setTotalAmmount(0);
+        scrollToTop();
+    }
+
+    
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+    });
+  };
+
     return (
         <div className="bg-gray-200">
             <div className="w-screen h-screen grid justify-items-center px-3">
@@ -39,12 +66,12 @@ export default function NewBuffet({menu}) {
                     { 
                         menuOrder && menuOrder.menuItemsCollection && menuOrder.menuItemsCollection.items.map((submenu) => {
                             return (
-                                <div key={`category-${submenu.id}`} className="bg-white rounded-xl shadow-lg my-3 p-6">
+                                <div key={`category-${submenu.name}`} className="bg-white rounded-xl shadow-lg my-3 p-6">
                                     <strong>{submenu.title}</strong>
                                     {
                                         submenu && submenu.saleItemsCollection && submenu.saleItemsCollection.items.map((item) =>{
                                             return (
-                                                <ItemOrder key={`iemOrder-${item.id}`} item={item} click={setOrder} />
+                                                <ItemOrder key={`itemOrder-${item.name}`} item={item} click={setItemOrder} />
                                             )
                                         })
                                     }
@@ -58,7 +85,7 @@ export default function NewBuffet({menu}) {
                         </button>
                     </div>
                     <div className="mx-3 my-4 flex justify-center">
-                        <button className="py-3 px-6 bg-black text-white rounded-full">
+                        <button onClick={saveOrder} className="py-3 px-6 bg-black text-white rounded-full">
                             TOMAR ORDEN
                         </button>
                     </div>
